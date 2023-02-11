@@ -1,0 +1,50 @@
+* {
+  --tw-text-opacity: 1;
+}
+body {
+  background-color: #18181b;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+  
+html {
+  height: -webkit-fill-available;
+}
+  
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.mainX img {
+  width: 8rem;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+
+.text {
+  display: inline-block;
+  margin-right: 15rem;
+  margin-top: 2rem;
+  color: white;
+}
+
+.dark-text.info {
+  color: rgb(212 212 216/var(--tw-text-opacity));
+}
+
+.dark-text.description {
+  color: rgb(161 161 170/var(--tw-text-opacity));
+}
+
+.subX {
+  margin-bottom: 1rem;
+}
+
+.subX img {
+  margin-top: 5rem;
+  width: 25rem;
+}
