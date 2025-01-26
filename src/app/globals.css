@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default */
+:root {
+  --foreground: #fff;
+  --background: #27272B;
+  --primary-color: #18181B;
+  --secondary-color: #2e2e34;
+  --content-color: #f0ece2;
+}
+
+/* Dark mode */
+.dark {
+  --foreground: #fff;
+  --background: #27272B;
+  --primary-color: #18181B;
+  --secondary-color: #2e2e34;
+  --content-color: #f0ece2;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 200px;
+  left: 44.5%; 
+  transform: translateX(-50%); 
+  transition-duration: 0.3s;
+  z-index: 30;
+}
+
+.box a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 26px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 18px;
+  top: calc(75px - 50px / 2);
+  box-shadow: 0 0 0.5rem #babbbc;
+  transition-duration: 0.3s;
+}
+
+.box.open {
+  opacity: 1;
+}
+
+.box.open a {
+  left: 45px;
+}
+
+.box.open a:hover {
+  border: 2px solid var(--content-color);
+  box-shadow: 0 0 1rem var(--content-color);
+}
+
+.box.open a:nth-of-type(1) {
+  transform: rotate(-180deg) translateX(120px) rotate(180deg);
+  transition-delay: 0s;
+}
+
+.box.open a:nth-of-type(2) {
+  transform: rotate(-135deg) translateX(120px) rotate(135deg);
+  transition-delay: 0.1s;
+}
+
+.box.open a:nth-of-type(3) {
+  transform: rotate(-90deg) translateX(120px) rotate(90deg);
+  transition-delay: 0.2s;
+}
+
+.box.open a:nth-of-type(4) {
+  transform: rotate(-45deg) translateX(120px) rotate(45deg);
+  transition-delay: 0.3s;
+}
+
+.box.open a:nth-of-type(5) {
+  transform: rotate(0deg) translateX(120px) rotate(0deg);
+  transition-delay: 0.4s;
+}
