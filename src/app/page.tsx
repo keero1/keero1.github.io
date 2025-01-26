@@ -13,8 +13,8 @@ import {
 
 export default function Profile() {
   const [isOpen, setIsOpen] = useState(false);
-  const profileImageRef = useRef<HTMLImageElement | null>(null); 
-  const boxRef = useRef<HTMLDivElement | null>(null); 
+  const profileImageRef = useRef<HTMLImageElement | null>(null);
+  const boxRef = useRef<HTMLDivElement | null>(null);
 
   const toggleBox = () => {
     setIsOpen(!isOpen);
@@ -43,13 +43,10 @@ export default function Profile() {
     <main className="h-full w-full">
       <div className="max-w-7xl px-6 pt-20">
         <div className="flex flex-col justify-center items-center">
-          <ProfileImage
-            toggleBox={toggleBox}
-            ref={profileImageRef} 
-          />
+          <ProfileImage toggleBox={toggleBox} ref={profileImageRef} />
 
           <div className="text-center mt-6">
-            <p className="text-white text-xl">Hi, I`&apos;`m Keero</p>
+            <p className="text-white text-xl">Hi, I&#39;m Keero</p>
             <p className="text-white text-lg">A stupid sandwhich</p>
           </div>
 
