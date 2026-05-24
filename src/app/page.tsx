@@ -43,69 +43,68 @@ export default function Profile() {
     <main className="h-full w-full">
       <div className="max-w-7xl px-6 pt-20">
         <div className="flex flex-col justify-center items-center">
-          <ProfileImage toggleBox={toggleBox} ref={profileImageRef} />
+          {/* Profile + radial menu stack. Box sits behind the profile image
+              so the icons appear to pop out from behind the character. */}
+          <div className="relative">
+            <ProfileImage toggleBox={toggleBox} ref={profileImageRef} />
+
+            <div
+              ref={boxRef}
+              className={`box absolute inset-0 rounded-full ${
+                isOpen ? "open" : ""
+              }`}
+              aria-hidden={!isOpen}
+            >
+              <a
+                href="https://discord.com/users/458866132779139073"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Discord"
+              >
+                <FaDiscord />
+              </a>
+
+              <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebook />
+              </a>
+
+              <a
+                href="https://guthib.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+
+              <a
+                href="https://www.youtube.com/watch?v=UIp6_0kct_U"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                <FaTwitter />
+              </a>
+
+              <a
+                href="https://steamcommunity.com/id/keero1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Steam"
+              >
+                <FaSteam />
+              </a>
+            </div>
+          </div>
 
           <div className="text-center mt-6">
             <p className="text-white text-xl">Hi, I&#39;m Keero</p>
             <p className="text-white text-lg">A stupid sandwhich</p>
-          </div>
-
-          {/* Box */}
-          <div
-            ref={boxRef}
-            className={`box absolute w-[150px] h-[150px] rounded-full left-[50%] transform -translate-x-[50%] top-[-75px] transition-all duration-300 ease-in-out opacity-0 z-20 ${
-              isOpen ? "opacity-100 open" : ""
-            }`}
-          >
-            {/* Discord */}
-            <a
-              className="flex justify-center items-center w-[50px] h-[50px] rounded-full text-[26px] shadow-md transition-all duration-300"
-              href="https://discord.com/users/458866132779139073"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaDiscord />
-            </a>
-
-            {/* Facebook */}
-            <a
-              className="flex justify-center items-center w-[50px] h-[50px] rounded-full text-[26px] shadow-md transition-all duration-300"
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebook />
-            </a>
-
-            {/* GitHub */}
-            <a
-              className="flex justify-center items-center w-[50px] h-[50px] rounded-full text-[26px] shadow-md transition-all duration-300"
-              href="https://guthib.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub />
-            </a>
-
-            {/* Twitter */}
-            <a
-              className="flex justify-center items-center w-[50px] h-[50px] rounded-full text-[26px] shadow-md transition-all duration-300"
-              href="https://www.youtube.com/watch?v=UIp6_0kct_U"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter />
-            </a>
-
-            {/* Steam */}
-            <a
-              className="flex justify-center items-center w-[50px] h-[50px] rounded-full text-[26px] shadow-md transition-all duration-300"
-              href="https://steamcommunity.com/id/keero1/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaSteam />
-            </a>
           </div>
         </div>
       </div>

@@ -19,6 +19,9 @@ const ProfileImage = forwardRef<HTMLImageElement, ProfileImageProps>(
       }
     }, [theme, mounted]);
 
+    const sizingClass =
+      "relative select-none cursor-pointer z-20 rounded-full w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px]";
+
     if (!mounted) {
       return (
         <Image
@@ -27,7 +30,7 @@ const ProfileImage = forwardRef<HTMLImageElement, ProfileImageProps>(
           quality={100}
           width={300}
           height={300}
-          className="select-none cursor-pointer z-20 rounded-full"
+          className={sizingClass}
           style={{ objectFit: "contain" }}
         />
       );
@@ -41,7 +44,7 @@ const ProfileImage = forwardRef<HTMLImageElement, ProfileImageProps>(
         quality={100}
         width={300}
         height={300}
-        className="select-none cursor-pointer z-20 rounded-full"
+        className={sizingClass}
         style={{ objectFit: "contain" }}
         onClick={toggleBox}
       />

@@ -2,22 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Default */
+/* Default (light theme toggle) — site palette stays the same; only the
+   social icons restyle when the html element does NOT have .dark. */
 :root {
   --foreground: #fff;
-  --background: #27272B;
-  --primary-color: #18181B;
+  --background: #27272b;
+  --primary-color: #18181b;
   --secondary-color: #2e2e34;
   --content-color: #f0ece2;
+
+  /* Radial menu icons — light variant */
+  --icon-bg: rgba(255, 255, 255, 0.92);
+  --icon-color: #18181b;
+  --icon-shadow: 0 4px 14px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  --icon-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 /* Dark mode */
 .dark {
   --foreground: #fff;
-  --background: #27272B;
-  --primary-color: #18181B;
+  --background: #27272b;
+  --primary-color: #18181b;
   --secondary-color: #2e2e34;
   --content-color: #f0ece2;
+
+  /* Radial menu icons — dark variant */
+  --icon-bg: rgba(39, 39, 43, 0.85);
+  --icon-color: #f0ece2;
+  --icon-shadow: 0 0 0.6rem rgba(186, 187, 188, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  --icon-hover-shadow: 0 0 1rem rgba(240, 236, 226, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 body {
@@ -26,66 +43,85 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Radial social menu — icons start stacked at the profile image's center
+   (hidden behind it via z-index) and slide outward, so they appear to
+   emerge from behind the character. */
 .box {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: absolute;
-  top: 200px;
-  left: 44.5%; 
-  transform: translateX(-50%); 
-  transition-duration: 0.3s;
-  z-index: 30;
+  /* Don't swallow clicks aimed at the profile image while closed. */
+  pointer-events: none;
+  /* Fan-out distance scales with viewport so icons clear the (smaller)
+     profile image on mobile without getting clipped at the screen edges. */
+  --fan-distance: 180px;
+}
+
+@media (max-width: 768px) {
+  .box {
+    --fan-distance: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    --fan-distance: 130px;
+  }
+}
+
+@media (max-width: 360px) {
+  .box {
+    --fan-distance: 115px;
+  }
 }
 
 .box a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 50px;
   height: 50px;
+  margin-top: -25px;
+  margin-left: -25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   font-size: 26px;
-  text-align: center;
-  line-height: 50px;
-  position: absolute;
-  left: 18px;
-  top: calc(75px - 50px / 2);
-  box-shadow: 0 0 0.5rem #babbbc;
+  background: var(--icon-bg);
+  color: var(--icon-color);
+  box-shadow: var(--icon-shadow);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition-duration: 0.3s;
 }
 
-.box.open {
-  opacity: 1;
-}
-
 .box.open a {
-  left: 45px;
+  pointer-events: auto;
 }
 
 .box.open a:hover {
-  border: 2px solid var(--content-color);
-  box-shadow: 0 0 1rem var(--content-color);
+  box-shadow: var(--icon-hover-shadow);
 }
 
 .box.open a:nth-of-type(1) {
-  transform: rotate(-180deg) translateX(120px) rotate(180deg);
+  transform: rotate(-180deg) translateX(var(--fan-distance)) rotate(180deg);
   transition-delay: 0s;
 }
 
 .box.open a:nth-of-type(2) {
-  transform: rotate(-135deg) translateX(120px) rotate(135deg);
+  transform: rotate(-135deg) translateX(var(--fan-distance)) rotate(135deg);
   transition-delay: 0.1s;
 }
 
 .box.open a:nth-of-type(3) {
-  transform: rotate(-90deg) translateX(120px) rotate(90deg);
+  transform: rotate(-90deg) translateX(var(--fan-distance)) rotate(90deg);
   transition-delay: 0.2s;
 }
 
 .box.open a:nth-of-type(4) {
-  transform: rotate(-45deg) translateX(120px) rotate(45deg);
+  transform: rotate(-45deg) translateX(var(--fan-distance)) rotate(45deg);
   transition-delay: 0.3s;
 }
 
 .box.open a:nth-of-type(5) {
-  transform: rotate(0deg) translateX(120px) rotate(0deg);
+  transform: rotate(0deg) translateX(var(--fan-distance)) rotate(0deg);
   transition-delay: 0.4s;
 }
